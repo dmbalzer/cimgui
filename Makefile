@@ -8,6 +8,8 @@ OBJS += ./imgui/imgui_draw.o
 OBJS += ./imgui/imgui_demo.o
 OBJS += ./imgui/imgui_tables.o
 OBJS += ./imgui/imgui_widgets.o
+OBJS += ./imgui/backends/imgui_impl_sdl2.o
+OBJS += ./imgui/backends/imgui_impl_sdlrenderer2.o
 
 CXXFLAGS=-O2 -fno-exceptions -fno-rtti
 
@@ -43,6 +45,13 @@ ifeq ($(OS), Windows_NT)
 	CXXFLAGS += -Wall
 	CXXFLAGS += -shared
 	LINKFLAGS = -limm32
+	CXXFLAGS += -IC:\\msys64\\mingw32\\include\\SDL2\\
+	CXXFLAGS += -Wall
+	CXXFLAGS += -shared
+	LINKFLAGS = -limm32
+	LINKFLAGS = -lmingw32
+	LINKFLAGS = -lSDL2main
+	LINKFLAGS = -lSDL2
 	CFLAGS = $(CXXFLAGS)
 endif
 
